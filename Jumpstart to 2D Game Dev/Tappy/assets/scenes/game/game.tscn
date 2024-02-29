@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://cl0fhp8h81j3c"]
+
+[ext_resource type="Script" path="res://assets/scenes/game/game.gd" id="1_lfluc"]
+[ext_resource type="PackedScene" uid="uid://0iwgnorrcivq" path="res://assets/scenes/plane/plane.tscn" id="2_gvmpm"]
+[ext_resource type="PackedScene" uid="uid://cwhgswo16p8pk" path="res://assets/scenes/barrier/barrier.tscn" id="3_u6asg"]
+[ext_resource type="PackedScene" uid="uid://gtqwl3ry80mm" path="res://assets/scenes/obstacles/obstacles.tscn" id="4_ppuxa"]
+[ext_resource type="PackedScene" uid="uid://ce3883o7ho4cd" path="res://assets/scenes/hud/hud.tscn" id="6_wjqnj"]
+[ext_resource type="PackedScene" uid="uid://dpb2bfcjvxse0" path="res://assets/scenes/scrolling_bg/scrolling_bg.tscn" id="7_at6pu"]
+[ext_resource type="PackedScene" uid="uid://but11d0umbq6s" path="res://assets/scenes/gameover/gameover.tscn" id="7_xfshi"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_lfluc")
+pipes_scene = ExtResource("4_ppuxa")
+
+[node name="scrolling_bg" parent="." instance=ExtResource("7_at6pu")]
+
+[node name="plane" parent="." instance=ExtResource("2_gvmpm")]
+z_index = 1
+position = Vector2(61, 451)
+
+[node name="barrier" parent="." instance=ExtResource("3_u6asg")]
+position = Vector2(0, -21)
+
+[node name="floor" parent="." instance=ExtResource("3_u6asg")]
+position = Vector2(0, 854)
+
+[node name="obsholder" type="Node" parent="."]
+
+[node name="spawntimer" type="Timer" parent="."]
+wait_time = 1.2
+autostart = true
+
+[node name="spawnU" type="Marker2D" parent="."]
+position = Vector2(540, 300)
+
+[node name="spawnL" type="Marker2D" parent="."]
+position = Vector2(540, 530)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="hud" parent="CanvasLayer" instance=ExtResource("6_wjqnj")]
+
+[node name="gameover" parent="CanvasLayer" instance=ExtResource("7_xfshi")]
+
+[connection signal="timeout" from="spawntimer" to="." method="_on_spawntimer_timeout"]
