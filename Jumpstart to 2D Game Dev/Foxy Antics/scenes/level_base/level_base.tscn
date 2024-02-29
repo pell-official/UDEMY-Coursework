@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch3ysudp6x6t6"]
+[gd_scene load_steps=9 format=3 uid="uid://ch3ysudp6x6t6"]
 
 [ext_resource type="Script" path="res://scenes/level_base/level_base.gd" id="1_05kyx"]
 [ext_resource type="Texture2D" uid="uid://b7i5q5k5b7eo1" path="res://assets/tiles/Terrain (16x16).png" id="1_cvn4q"]
 [ext_resource type="PackedScene" uid="uid://bxfpt88npl0d7" path="res://scenes/player_cam/player_cam.tscn" id="2_ee8aq"]
 [ext_resource type="PackedScene" uid="uid://ckxyt2ma23oga" path="res://scenes/player/player.tscn" id="3_uijcs"]
 [ext_resource type="PackedScene" uid="uid://c2ttl3rye1hco" path="res://scenes/enemies/eagle/eagle.tscn" id="5_hbtj6"]
+[ext_resource type="PackedScene" uid="uid://cu87cb1gf8xnn" path="res://scenes/boss/boss.tscn" id="6_huby0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4aqq7"]
 texture = ExtResource("1_cvn4q")
@@ -542,3 +543,6 @@ position = Vector2(618, -229)
 
 [node name="Eagle3" parent="." instance=ExtResource("5_hbtj6")]
 position = Vector2(681, -312)
+
+[node name="Boss" parent="." instance=ExtResource("6_huby0")]
+position = Vector2(145, -16)
