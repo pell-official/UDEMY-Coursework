@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://d2paawb3m2wkc"]
+
+[ext_resource type="Script" path="res://scenes/ball_spikes/ball_spikes.gd" id="1_cipva"]
+[ext_resource type="Texture2D" uid="uid://besgjsyx3m62s" path="res://assets/danger/spiked_ball.png" id="1_yfpoc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufhuj"]
+radius = 9.0
+
+[sub_resource type="Animation" id="Animation_di5er"]
+resource_name = "spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_hiy05"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_651gs"]
+_data = {
+"RESET": SubResource("Animation_hiy05"),
+"spin": SubResource("Animation_di5er")
+}
+
+[node name="BallSpikes" type="PathFollow2D"]
+script = ExtResource("1_cipva")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="HitBox"]
+texture = ExtResource("1_yfpoc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_ufhuj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HitBox"]
+libraries = {
+"": SubResource("AnimationLibrary_651gs")
+}
+autoplay = "spin"

@@ -10,7 +10,7 @@ class_name Player
 @onready var shooter = $Shooter
 @onready var hurt_timer = $HurtTimer
 const GRAVITY: float = 1000.0
-const RUN_SPEED: float = 120.0
+const RUN_SPEED: float = 200.0
 const MAX_FALL: float = 400.0
 const JUMP_VELOCITY: float = -400.0
 const HURT_JUMP_VELOCITY: float = -100.0
