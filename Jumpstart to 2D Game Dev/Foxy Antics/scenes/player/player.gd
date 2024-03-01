@@ -89,12 +89,14 @@ func set_state(new_state: PLAYER_STATE):
 			animation_player.play("jump")
 		PLAYER_STATE.FALL:
 			animation_player.play("fall")
+		PLAYER_STATE.HURT:
+			apply_hurt_jump()
 
 func apply_hurt_jump():
-	set_state(PLAYER_STATE.HURT)
 	animation_player.play("hurt")
 	velocity.y = HURT_JUMP_VELOCITY
 	hurt_timer.start()
+	SignalManager.on_player_hit.emit(0)
 
 func go_invincible():
 	_invincible = true
@@ -106,7 +108,7 @@ func apply_hit():
 	if _invincible == true:
 		return
 	go_invincible()
-	apply_hurt_jump()
+	set_state(PLAYER_STATE.HURT)
 	SoundManager.play_clip(sound_player, SoundManager.SOUND_DAMAGE)
 
 func _on_hit_box_area_entered(area):

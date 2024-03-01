@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ch3ysudp6x6t6"]
+[gd_scene load_steps=18 format=3 uid="uid://ch3ysudp6x6t6"]
 
 [ext_resource type="Script" path="res://scenes/level_base/level_base.gd" id="1_05kyx"]
 [ext_resource type="Texture2D" uid="uid://b7i5q5k5b7eo1" path="res://assets/tiles/Terrain (16x16).png" id="1_cvn4q"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://claaq43wngg87" path="res://assets/backgrounds/game_background_1/layers/clouds_3.png" id="9_avyof"]
 [ext_resource type="PackedScene" uid="uid://ctd55h8x1sr6q" path="res://scenes/scrolling_bg/scrolling_bg.tscn" id="9_ttnsq"]
 [ext_resource type="Texture2D" uid="uid://2adx8hcjj03i" path="res://assets/backgrounds/game_background_1/layers/clouds_4.png" id="10_8mp1q"]
+[ext_resource type="PackedScene" uid="uid://dj566v3n3134l" path="res://scenes/enemies/snail/snail.tscn" id="13_sh7ve"]
+[ext_resource type="AudioStream" uid="uid://c8xlouih8nej6" path="res://assets/sound/Flowing Rocks.ogg" id="14_shq8u"]
+[ext_resource type="PackedScene" uid="uid://dh4fo3griw1dq" path="res://scenes/hud/hud.tscn" id="15_wgbmu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4aqq7"]
 texture = ExtResource("1_cvn4q")
@@ -669,3 +672,14 @@ position = Vector2(50, -40)
 position = Vector2(50, -140)
 
 [node name="Paths" type="Node" parent="."]
+
+[node name="Snail" parent="." instance=ExtResource("13_sh7ve")]
+position = Vector2(139, -26)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_shq8u")
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("15_wgbmu")]
