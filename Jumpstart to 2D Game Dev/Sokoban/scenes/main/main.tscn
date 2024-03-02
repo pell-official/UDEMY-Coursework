@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj0dem6irux78"]
+
+[ext_resource type="Texture2D" uid="uid://dyocwthiaa8ub" path="res://assets/Gray.png" id="1_lhe0w"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_v3m85"]
+[ext_resource type="LabelSettings" uid="uid://cklyvpos616yb" path="res://assets/labels/lg_white_96.tres" id="2_yymsx"]
+
+[node name="Main" type="CanvasLayer"]
+script = ExtResource("1_v3m85")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lhe0w")
+stretch_mode = 1
+
+[node name="MC" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MC/VBoxContainer"]
+layout_mode = 2
+text = "SOKOBAN"
+label_settings = ExtResource("2_yymsx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MC/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 6
