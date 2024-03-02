@@ -14,14 +14,17 @@ const RUN_SPEED: float = 120.0
 const MAX_FALL: float = 400.0
 const JUMP_VELOCITY: float = -400.0
 const HURT_JUMP_VELOCITY: float = -100.0
+const FALLEN_OFF: float =  100.0
 enum PLAYER_STATE {IDLE, RUN, JUMP, FALL, HURT}
+var _lives: int = 5
 var _state: PLAYER_STATE = PLAYER_STATE.IDLE
 var _invincible: bool = false
 
 func _ready():
-	pass
+	SignalManager.on_player_hit.emit(_lives)
 
 func _physics_process(delta):
+	fallen_off()
 	if is_on_floor() == false:
 		velocity.y += GRAVITY * delta
 	get_input()
@@ -31,6 +34,12 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot") == true:
 		shoot()
 
+func fallen_off():
+	if global_position.y < FALLEN_OFF:
+		return
+	_lives = 1
+	reduce_lives()
+
 func shoot():
 	if sprite_2d.flip_h == true:
 		shooter.shoot(Vector2.LEFT)
@@ -38,9 +47,9 @@ func shoot():
 		shooter.shoot(Vector2.RIGHT)
 
 func update_debug_label():
-	debug_label.text = "floor:%s inv:%s\n%s\n%.0f,%0f" % [
+	debug_label.text = "floor:%s inv:%s\n%s lives:%s\n%.0f,%0f" % [
 		is_on_floor(), _invincible,
-		PLAYER_STATE.keys()[_state],
+		PLAYER_STATE.keys()[_state], _lives,
 		velocity.x,velocity.y
 	]
 
@@ -96,16 +105,25 @@ func apply_hurt_jump():
 	animation_player.play("hurt")
 	velocity.y = HURT_JUMP_VELOCITY
 	hurt_timer.start()
-	SignalManager.on_player_hit.emit(0)
 
 func go_invincible():
 	_invincible = true
 	animation_player_invincible.play("invincible")
 	invincible_timer.start()
-	
+
+func reduce_lives() -> bool:
+	_lives -= 1
+	SignalManager.on_player_hit.emit(_lives)
+	if _lives <= 0:
+		SignalManager.on_game_over.emit()
+		set_physics_process(false)
+		return false
+	return true
 
 func apply_hit():
 	if _invincible == true:
+		return
+	if reduce_lives() == false:
 		return
 	go_invincible()
 	set_state(PLAYER_STATE.HURT)

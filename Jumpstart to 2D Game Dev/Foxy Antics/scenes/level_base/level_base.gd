@@ -5,8 +5,12 @@ extends Node2D
 
 
 func _ready():
-	pass # Replace with function body.
+	get_tree().paused = false
 
 
-func _physics_process(delta):
+func _process(delta):
 	player_cam.position = player.position
+	#if Input.is_action_just_pressed("left") == true:
+		#GameManager.load_main_scene()
+	#if Input.is_action_just_pressed("right") == true:
+		#GameManager.load_next_level_scene()

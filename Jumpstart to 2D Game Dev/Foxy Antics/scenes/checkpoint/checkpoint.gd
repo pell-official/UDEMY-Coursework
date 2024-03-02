@@ -6,7 +6,6 @@ const TRIGGER_CONDITION: String = "parameters/conditions/on_trigger"
 
 
 func _ready():
-	
 	SignalManager.on_boss_killed.connect(on_boss_killed)
 
 func on_boss_killed(_p: int):
@@ -15,4 +14,4 @@ func on_boss_killed(_p: int):
 	SoundManager.play_clip(sound, SoundManager.SOUND_WIN)
 
 func _on_area_entered(area):
-	pass
+	SignalManager.on_level_complete.emit()

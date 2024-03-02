@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh4fo3griw1dq"]
+[gd_scene load_steps=6 format=3 uid="uid://dh4fo3griw1dq"]
 
+[ext_resource type="Script" path="res://scenes/hud/hud.gd" id="1_1s6mc"]
 [ext_resource type="LabelSettings" uid="uid://tay7ny3ue2ji" path="res://assets/labelsettings/gem_48_wh_ceru.tres" id="1_fvckg"]
 [ext_resource type="Texture2D" uid="uid://wcaxlpfsog5j" path="res://assets/items/pixel heart 2.png" id="2_j7gyd"]
 [ext_resource type="LabelSettings" uid="uid://e8w8n1bv8oi4" path="res://assets/labelsettings/lg_64_blue.tres" id="3_ds2ap"]
 [ext_resource type="LabelSettings" uid="uid://dpy530bvpwbdm" path="res://assets/labelsettings/lg_24_lblue.tres" id="4_giwl7"]
 
 [node name="HUD" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1s6mc")
 
 [node name="MC" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -32,34 +35,34 @@ size_flags_vertical = 0
 [node name="ScoreLabel" type="Label" parent="MC/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0000"
+text = "00000"
 label_settings = ExtResource("1_fvckg")
 vertical_alignment = 1
 
-[node name="HB" type="HBoxContainer" parent="MC/HBoxContainer"]
+[node name="HBHearts" type="HBoxContainer" parent="MC/HBoxContainer"]
 layout_mode = 2
 
-[node name="L1" type="TextureRect" parent="MC/HBoxContainer/HB"]
-layout_mode = 2
-texture = ExtResource("2_j7gyd")
-stretch_mode = 5
-
-[node name="L2" type="TextureRect" parent="MC/HBoxContainer/HB"]
+[node name="L1" type="TextureRect" parent="MC/HBoxContainer/HBHearts"]
 layout_mode = 2
 texture = ExtResource("2_j7gyd")
 stretch_mode = 5
 
-[node name="L3" type="TextureRect" parent="MC/HBoxContainer/HB"]
+[node name="L2" type="TextureRect" parent="MC/HBoxContainer/HBHearts"]
 layout_mode = 2
 texture = ExtResource("2_j7gyd")
 stretch_mode = 5
 
-[node name="L4" type="TextureRect" parent="MC/HBoxContainer/HB"]
+[node name="L3" type="TextureRect" parent="MC/HBoxContainer/HBHearts"]
 layout_mode = 2
 texture = ExtResource("2_j7gyd")
 stretch_mode = 5
 
-[node name="L5" type="TextureRect" parent="MC/HBoxContainer/HB"]
+[node name="L4" type="TextureRect" parent="MC/HBoxContainer/HBHearts"]
+layout_mode = 2
+texture = ExtResource("2_j7gyd")
+stretch_mode = 5
+
+[node name="L5" type="TextureRect" parent="MC/HBoxContainer/HBHearts"]
 layout_mode = 2
 texture = ExtResource("2_j7gyd")
 stretch_mode = 5
@@ -104,6 +107,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="VBGameOver" type="VBoxContainer" parent="ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
