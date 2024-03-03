@@ -1,0 +1,116 @@
+[gd_scene load_steps=12 format=3 uid="uid://gw8vodscr370"]
+
+[ext_resource type="Texture2D" uid="uid://dg2d4ff1oh7rf" path="res://assets/backgrounds/GalaxyUno.png" id="1_alfsh"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_b6j0u"]
+[ext_resource type="Texture2D" uid="uid://b3u6tbt5jyekt" path="res://assets/backgrounds/spr_stars01.png" id="2_dm58r"]
+[ext_resource type="Texture2D" uid="uid://cjtb7uwaawp8w" path="res://assets/backgrounds/spr_stars02.png" id="3_useul"]
+[ext_resource type="FontFile" uid="uid://ce478sju7uhf" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="4_14nb8"]
+[ext_resource type="Texture2D" uid="uid://hm6p6w5qmrsw" path="res://assets/ui/blue_button00.png" id="5_ne3hw"]
+[ext_resource type="Texture2D" uid="uid://bqmdcjqhkoo3h" path="res://assets/ui/green_button00.png" id="6_0h145"]
+[ext_resource type="Texture2D" uid="uid://cyw60pi26xn47" path="res://assets/ui/yellow_button00.png" id="7_dmnkk"]
+[ext_resource type="LabelSettings" uid="uid://de8pvh7mgjvi6" path="res://assets/labels/gm_32_wh.tres" id="8_mcs83"]
+[ext_resource type="PackedScene" uid="uid://gsq4b561w2ht" path="res://scenes/sun/sun.tscn" id="9_228eh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4meea"]
+font = ExtResource("4_14nb8")
+font_size = 72
+font_color = Color(0.945098, 0.458824, 0.172549, 1)
+outline_size = 3
+outline_color = Color(0.137255, 0.239216, 1, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_b6j0u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_alfsh")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dm58r")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_useul")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SPACE ACE"
+label_settings = SubResource("LabelSettings_4meea")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+
+[node name="PlayButton" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ne3hw")
+texture_pressed = ExtResource("6_0h145")
+texture_hover = ExtResource("7_dmnkk")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "PLAY"
+label_settings = ExtResource("8_mcs83")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_ne3hw")
+texture_pressed = ExtResource("6_0h145")
+texture_hover = ExtResource("7_dmnkk")
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "EXIT"
+label_settings = ExtResource("8_mcs83")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sun" parent="." instance=ExtResource("9_228eh")]
+position = Vector2(24, 24)
+scale = Vector2(0.3, 0.3)
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
