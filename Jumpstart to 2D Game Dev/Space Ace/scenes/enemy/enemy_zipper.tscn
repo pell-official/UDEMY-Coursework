@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba5n7ijjxb0jj"]
+
+[ext_resource type="PackedScene" uid="uid://cgjg04htpsftx" path="res://scenes/enemy/enemy_basic/enemy_basic.tscn" id="1_mmfct"]
+
+[node name="EnemyZipper" instance=ExtResource("1_mmfct")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+animation = &"zipper_1"

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc2i12i6wn0sl"]
+
+[ext_resource type="PackedScene" uid="uid://cgjg04htpsftx" path="res://scenes/enemy/enemy_basic/enemy_basic.tscn" id="1_28ppt"]
+
+[node name="EnemyBio" instance=ExtResource("1_28ppt")]
+_shoots = true
