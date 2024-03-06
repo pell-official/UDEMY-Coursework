@@ -1,10 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://q3gqobyf7nab"]
+[gd_scene load_steps=9 format=3 uid="uid://q3gqobyf7nab"]
 
 [ext_resource type="Texture2D" uid="uid://cr67rj4h4sety" path="res://assets/ships/ships_human_1.png" id="1_6gcpd"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_7ywqi"]
+[ext_resource type="PackedScene" uid="uid://cyslqw02fhrmy" path="res://scenes/bullet/player_bullet.tscn" id="2_qasly"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2tj3p"]
 radius = 11.4018
+
+[sub_resource type="Animation" id="Animation_q4pis"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_fe1hk"]
 resource_name = "fly"
@@ -21,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_q4pis"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_kahaf"]
@@ -64,6 +65,7 @@ _data = {
 
 [node name="Player" type="Area2D" groups=["player"]]
 script = ExtResource("1_7ywqi")
+bullet_scene = ExtResource("2_qasly")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_6gcpd")

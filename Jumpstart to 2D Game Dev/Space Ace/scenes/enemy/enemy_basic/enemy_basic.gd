@@ -8,17 +8,18 @@ extends PathFollow2D
 var _player_ref: Player
 var _speed: float = 0.0
 var _can_shoot: bool = false
-var dead: bool = false
+var _dead: bool = false
+var _anim_string: String
 
 func _ready():
 	_player_ref = get_tree().get_first_node_in_group(GameData.GROUP_PLAYER)
 	if !_player_ref:
 		queue_free()
-	animated_sprite_2d.play()
+	animated_sprite_2d.play(_anim_string)
 
 func setup(speed: float, anim_name: String):
 	_speed = speed
-	animated_sprite_2d.animation = anim_name
+	_anim_string = anim_name
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

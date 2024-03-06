@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://h5alke0vkuwf"]
+
+[ext_resource type="Script" path="res://scenes/bullet/bullet_base/bullet_base.gd" id="1_ah3mt"]
+
+[node name="BulletBase" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_ah3mt")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
