@@ -12,6 +12,10 @@ var _upper_left: Vector2
 var _lower_right: Vector2
 
 func _ready():
+	set_limits()
+	SignalManager.on_powerup_hit.connect(on_powerup_hit)
+
+func set_limits():
 	var vp = get_viewport_rect()
 	_lower_right = Vector2(vp.size.x - MARGIN, vp.size.y - MARGIN)
 	_upper_left = Vector2(MARGIN, MARGIN)
@@ -41,3 +45,9 @@ func shoot():
 	var bullet = bullet_scene.instantiate()
 	bullet.setup(global_position, bullet_direction, bullet_speed, bullet_damage)
 	get_tree().root.add_child(bullet)
+
+func on_powerup_hit(power_up:GameData.POWERUP_TYPE):
+	print("powerup: ", power_up)
+
+func _on_area_entered(area):
+	pass # Replace with function body.

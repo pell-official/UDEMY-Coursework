@@ -16,6 +16,4 @@ script = ExtResource("1_u3aoi")
 [node name="WaveManager" parent="." instance=ExtResource("4_7hyex")]
 
 [node name="PowerUp" parent="." instance=ExtResource("5_umni8")]
-position = Vector2(336, -46)
-
-[connection signal="area_entered" from="Player" to="." method="_on_area_entered"]
+position = Vector2(632, 178)
