@@ -64,3 +64,7 @@ func _on_screen_exited():
 
 func _on_area_entered(area):
 	pass # Replace with function body.
+
+
+func _on_died():
+	pass # Replace with function body.
