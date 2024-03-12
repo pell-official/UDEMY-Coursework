@@ -1,12 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc2i12i6wn0sl"]
+[gd_scene load_steps=4 format=3 uid="uid://cc2i12i6wn0sl"]
 
 [ext_resource type="PackedScene" uid="uid://cgjg04htpsftx" path="res://scenes/enemy/enemy_basic/enemy_basic.tscn" id="1_28ppt"]
+[ext_resource type="PackedScene" uid="uid://djpaqwgyljgnh" path="res://scenes/bullet/enemy_bullet.tscn" id="2_ygcla"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yjlrw"]
 height = 34.0
 
 [node name="EnemyBio" instance=ExtResource("1_28ppt")]
 _shoots = true
+bullet_scene = ExtResource("2_ygcla")
+bullet_wait_time = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 6)

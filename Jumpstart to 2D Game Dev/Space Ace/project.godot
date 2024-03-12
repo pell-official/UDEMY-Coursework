@@ -30,6 +30,10 @@ window/size/viewport_height=960
 window/stretch/mode="canvas_items"
 window/stretch/scale=2.0
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 up={

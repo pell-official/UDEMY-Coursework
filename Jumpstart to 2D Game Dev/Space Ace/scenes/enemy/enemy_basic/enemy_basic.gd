@@ -2,6 +2,12 @@ extends PathFollow2D
 
 @export var _shoots: bool = false
 @export var aims_at_player: bool = false
+@export var bullet_scene: PackedScene
+@export var bullet_damage: int = 10
+@export var bullet_speed: float = 200.0
+@export var bullet_direction: Vector2 = Vector2.DOWN
+@export var bullet_wait_time: float = 3.0
+@export var bullet_wait_time_var: float = 0.05
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var laser_timer = $LaserTimer
 @onready var booms = $Booms
@@ -27,13 +33,28 @@ func _process(delta):
 	if progress_ratio > 0.99:
 		queue_free()
 
+func update_bullet_dir():
+	if aims_at_player == false or is_instance_valid(_player_ref) == false:
+		return
+	bullet_direction = global_position.direction_to(_player_ref.global_position)
+
+func start_shoot_timer():
+	Utilities.set_and_start_timer(laser_timer, bullet_wait_time, bullet_wait_time_var)
+
+func shoot():
+	var b = bullet_scene.instantiate()
+	update_bullet_dir()
+	b.setup(global_position, bullet_direction, bullet_speed, bullet_damage)
+	get_tree().root.add_child(b)
+	start_shoot_timer()
 
 func _on_laser_timer_timeout():
-	pass # Replace with function body.
+	shoot()
 
 
 func _on_screen_entered():
-	pass # Replace with function body.
+	if _shoots == true:
+		start_shoot_timer()
 
 
 func _on_screen_exited():

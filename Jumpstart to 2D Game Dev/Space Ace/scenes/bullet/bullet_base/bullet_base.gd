@@ -22,7 +22,8 @@ func _on_screen_exited():
 	queue_free()
 
 func blow_up(area:Node2D):
-	ObjectMaker.create_explosion(global_position)
+	var net_position = global_position - area.global_position
+	ObjectMaker.create_explosion(net_position, area)
 	set_process(false)
 	queue_free()
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1vadbk4pwgnq"]
+[gd_scene load_steps=4 format=3 uid="uid://c1vadbk4pwgnq"]
 
 [ext_resource type="PackedScene" uid="uid://cgjg04htpsftx" path="res://scenes/enemy/enemy_basic/enemy_basic.tscn" id="1_id3qa"]
+[ext_resource type="PackedScene" uid="uid://ctl4ik1yyokil" path="res://scenes/bullet/enemy_bomb.tscn" id="2_bl2gi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bg16i"]
 radius = 23.0217
@@ -8,6 +9,7 @@ radius = 23.0217
 [node name="EnemyBomber" instance=ExtResource("1_id3qa")]
 _shoots = true
 aims_at_player = true
+bullet_scene = ExtResource("2_bl2gi")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 animation = &"bomber_1"
