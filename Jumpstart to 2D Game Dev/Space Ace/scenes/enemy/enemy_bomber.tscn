@@ -18,6 +18,18 @@ animation = &"bomber_1"
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_bg16i")
 
+[node name="Marker2D" type="Marker2D" parent="Booms" index="0"]
+position = Vector2(-11, 15)
+
+[node name="Marker2D2" type="Marker2D" parent="Booms" index="1"]
+position = Vector2(12, -6)
+
+[node name="Marker2D3" type="Marker2D" parent="Booms" index="2"]
+position = Vector2(5, 8)
+
+[node name="Marker2D4" type="Marker2D" parent="Booms" index="3"]
+position = Vector2(-15, -3)
+
 [node name="HealthBar" parent="." index="5"]
 offset_left = -16.0
 offset_top = -30.0

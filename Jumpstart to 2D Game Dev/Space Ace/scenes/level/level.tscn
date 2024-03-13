@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bd82pveyh3yt1" path="res://scenes/levelbg/level_bg.tscn" id="2_bgb0p"]
 [ext_resource type="PackedScene" uid="uid://q3gqobyf7nab" path="res://scenes/player/player.tscn" id="3_k3mh4"]
 [ext_resource type="PackedScene" uid="uid://mwvwnf8sc3i6" path="res://scenes/wave_manager/wave_manager.tscn" id="4_7hyex"]
-[ext_resource type="PackedScene" uid="uid://dn1kj4x7lnktr" path="res://scenes/power_up/power_up.tscn" id="5_umni8"]
+[ext_resource type="PackedScene" uid="uid://cgfqihe52n1jw" path="res://scenes/homing_missile/homing_missile.tscn" id="5_voxjr"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_u3aoi")
@@ -12,11 +12,11 @@ script = ExtResource("1_u3aoi")
 [node name="LevelBG" parent="." instance=ExtResource("2_bgb0p")]
 
 [node name="Player" parent="." instance=ExtResource("3_k3mh4")]
-position = Vector2(632, 762)
+position = Vector2(286, 447)
 
 [node name="WaveManager" parent="." instance=ExtResource("4_7hyex")]
 
-[node name="PowerUp" parent="." instance=ExtResource("5_umni8")]
-position = Vector2(336, -46)
+[node name="HomingMissile" parent="." instance=ExtResource("5_voxjr")]
+position = Vector2(148, 262)
 
 [connection signal="area_entered" from="Player" to="." method="_on_area_entered"]

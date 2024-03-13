@@ -49,6 +49,18 @@ func shoot():
 	get_tree().root.add_child(b)
 	start_shoot_timer()
 
+func make_booms():
+	for b in booms.get_children():
+		ObjectMaker.create_boom(b.global_position)
+
+func die():
+	if _dead == true:
+		return
+	_dead = true
+	set_process(false)
+	make_booms()
+	queue_free()
+
 func _on_laser_timer_timeout():
 	shoot()
 
@@ -68,5 +80,4 @@ func _on_area_entered(area):
 
 
 func _on_died():
-	set_process(false)
-	queue_free()
+	die()

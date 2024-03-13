@@ -14,6 +14,8 @@ animation = &"zipper_1"
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_74ok4")
 
+[node name="Marker2D" type="Marker2D" parent="Booms" index="0"]
+
 [node name="HealthBar" parent="." index="5"]
 offset_left = -13.0
 offset_top = -16.0
