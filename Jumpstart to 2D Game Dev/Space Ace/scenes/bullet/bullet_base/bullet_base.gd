@@ -22,8 +22,9 @@ func _on_screen_exited():
 	queue_free()
 
 func blow_up(area:Node2D):
-	var net_position = global_position - area.global_position
-	ObjectMaker.create_explosion(net_position, area)
+	if area.is_in_group(GameData.GROUP_HOMING_MISSILE) == false:
+		var net_position = global_position - area.global_position
+		ObjectMaker.create_explosion(net_position, area)
 	set_process(false)
 	queue_free()
 
