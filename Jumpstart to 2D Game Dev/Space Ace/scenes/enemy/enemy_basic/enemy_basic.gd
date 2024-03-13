@@ -11,6 +11,7 @@ extends PathFollow2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var laser_timer = $LaserTimer
 @onready var booms = $Booms
+@onready var health_bar = $HealthBar
 var _player_ref: Player
 var _speed: float = 0.0
 var _can_shoot: bool = false
@@ -63,8 +64,9 @@ func _on_screen_exited():
 
 
 func _on_area_entered(area):
-	pass # Replace with function body.
+	health_bar.take_damage(20)
 
 
 func _on_died():
-	pass # Replace with function body.
+	set_process(false)
+	queue_free()

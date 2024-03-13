@@ -17,3 +17,9 @@ animation = &"bomber_1"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_bg16i")
+
+[node name="HealthBar" parent="." index="5"]
+offset_left = -16.0
+offset_top = -30.0
+offset_right = 16.0
+offset_bottom = -28.0

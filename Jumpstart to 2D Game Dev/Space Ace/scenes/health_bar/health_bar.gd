@@ -18,11 +18,11 @@ func _process(delta):
 	set_color()
 
 func set_color():
-	if value < level_low:
+	if value <= level_low:
 		tint_progress = COLOR_DANGER
-	if value >= level_low and value < level_med:
+	if value > level_low and value < level_med:
 		tint_progress = COLOR_MIDDLE
-	else:
+	if value > level_med:
 		tint_progress = COLOR_GOOD
 
 func inc_value(v:int):

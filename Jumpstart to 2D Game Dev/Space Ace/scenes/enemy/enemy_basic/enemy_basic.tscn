@@ -334,6 +334,8 @@ collision_mask = 4
 [node name="Booms" type="Node2D" parent="."]
 
 [node name="HealthBar" parent="." instance=ExtResource("11_yj6pi")]
+offset_right = 26.0
+offset_bottom = 2.0
 
 [connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_entered"]

@@ -12,6 +12,7 @@ script = ExtResource("1_u3aoi")
 [node name="LevelBG" parent="." instance=ExtResource("2_bgb0p")]
 
 [node name="Player" parent="." instance=ExtResource("3_k3mh4")]
+position = Vector2(632, 762)
 
 [node name="WaveManager" parent="." instance=ExtResource("4_7hyex")]
 
