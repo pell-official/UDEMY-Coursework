@@ -8,10 +8,14 @@ extends PathFollow2D
 @export var bullet_direction: Vector2 = Vector2.DOWN
 @export var bullet_wait_time: float = 3.0
 @export var bullet_wait_time_var: float = 0.05
+@export var kill_me_score: int = 10
+@export var damage_taken: int = 10
+@export var powerup_chance: float = 0.05
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var laser_timer = $LaserTimer
 @onready var booms = $Booms
 @onready var health_bar = $HealthBar
+@onready var sound = $Sound
 var _player_ref: Player
 var _speed: float = 0.0
 var _can_shoot: bool = false
@@ -46,7 +50,8 @@ func shoot():
 	var b = bullet_scene.instantiate()
 	update_bullet_dir()
 	b.setup(global_position, bullet_direction, bullet_speed, bullet_damage)
-	get_tree().root.add_child(b)
+	get_tree().current_scene.add_child(b)
+	SoundManager.play_laser_random(sound)
 	start_shoot_timer()
 
 func make_booms():
@@ -57,8 +62,10 @@ func die():
 	if _dead == true:
 		return
 	_dead = true
+	create_powerup()
 	set_process(false)
 	make_booms()
+	ScoreManager.increment_score(kill_me_score)
 	queue_free()
 
 func _on_laser_timer_timeout():
@@ -76,8 +83,12 @@ func _on_screen_exited():
 
 
 func _on_area_entered(area):
-	health_bar.take_damage(20)
+	health_bar.take_damage(damage_taken)
 
 
 func _on_died():
 	die()
+
+func create_powerup() -> void:
+	if randf() < powerup_chance:
+		ObjectMaker.create_random_powerup(global_position)

@@ -10,6 +10,8 @@ height = 34.0
 _shoots = true
 bullet_scene = ExtResource("2_ygcla")
 bullet_wait_time = 2.0
+kill_me_score = 20
+damage_taken = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 6)

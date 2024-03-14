@@ -27,7 +27,7 @@ func spawn_wave():
 	var en_type = GameData.ENEMY_TYPE.values().pick_random()
 	var anim = ANIM_FRAMES[en_type].pick_random()
 	for num in range(4):
-		path.add_child(create_enemy(0.2, anim, en_type))
+		path.add_child(create_enemy(0.1, anim, en_type))
 		await get_tree().create_timer(1).timeout
 
 func _on_spawn_timer_timeout():

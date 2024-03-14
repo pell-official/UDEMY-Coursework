@@ -10,7 +10,6 @@ func _ready():
 
 func _on_died():
 	SignalManager.on_player_died.emit()
-	GameManager.load_main_scene()
 
 func on_player_hit(v:int):
 	health_bar.take_damage(v)

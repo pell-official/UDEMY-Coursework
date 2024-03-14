@@ -7,6 +7,7 @@ class_name Player
 @export var bullet_speed: float = 250.0
 @export var bullet_damage: int = 10
 @export var bullet_direction: Vector2 = Vector2.UP
+@export var health_bonus: int = 50
 @onready var shield = $Shield
 const MARGIN: float = 32.0
 var _upper_left: Vector2
@@ -45,11 +46,13 @@ func get_input() -> Vector2:
 func shoot():
 	var bullet = bullet_scene.instantiate()
 	bullet.setup(global_position, bullet_direction, bullet_speed, bullet_damage)
-	get_tree().root.add_child(bullet)
+	get_tree().current_scene.add_child(bullet)
 
 func on_powerup_hit(power_up:GameData.POWERUP_TYPE):
 	if power_up == GameData.POWERUP_TYPE.SHIELD:
 		shield.enable_shield()
+	elif power_up == GameData.POWERUP_TYPE.HEALTH:
+		SignalManager.on_player_health_bonus.emit(health_bonus)
 
 func _on_area_entered(area):
 	if area.is_in_group(GameData.ENEMY_SHIP) == true:

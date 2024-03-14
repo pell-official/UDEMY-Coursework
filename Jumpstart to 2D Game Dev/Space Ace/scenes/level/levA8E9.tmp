@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cajh6b3y12po1"]
+[gd_scene load_steps=8 format=3 uid="uid://cajh6b3y12po1"]
 
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_u3aoi"]
 [ext_resource type="PackedScene" uid="uid://bd82pveyh3yt1" path="res://scenes/levelbg/level_bg.tscn" id="2_bgb0p"]
@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b5fo547kpk5ld" path="res://scenes/game_ui/game_ui.tscn" id="6_46b4r"]
 [ext_resource type="PackedScene" uid="uid://cv747lixm6khw" path="res://scenes/saucer_manager/saucer_manager.tscn" id="6_bdn53"]
 [ext_resource type="PackedScene" uid="uid://so3634ulvltn" path="res://scenes/shake_cam/shake_cam.tscn" id="7_d36o8"]
-[ext_resource type="PackedScene" uid="uid://dsha85nm758eg" path="res://scenes/game_over/game_over.tscn" id="8_1dirm"]
-[ext_resource type="AudioStream" uid="uid://csebfq5ki4jrs" path="res://assets/sounds/loops/Mercury.wav" id="9_ftikd"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_u3aoi")
@@ -26,14 +24,7 @@ position = Vector2(286, 447)
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("6_46b4r")]
 
-[node name="GameOver" parent="CanvasLayer" instance=ExtResource("8_1dirm")]
-
 [node name="ShakeCam" parent="." instance=ExtResource("7_d36o8")]
 anchor_mode = 0
-
-[node name="Sound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_ftikd")
-volume_db = -6.0
-autoplay = true
 
 [connection signal="area_entered" from="Player" to="." method="_on_area_entered"]

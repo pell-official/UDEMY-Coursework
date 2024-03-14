@@ -10,6 +10,8 @@ radius = 23.0217
 _shoots = true
 aims_at_player = true
 bullet_scene = ExtResource("2_bl2gi")
+kill_me_score = 40
+damage_taken = 15
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 animation = &"bomber_1"
