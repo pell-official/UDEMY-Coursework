@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://dp5un3irnbhru"]
+[gd_scene load_steps=17 format=3 uid="uid://dp5un3irnbhru"]
 
 [ext_resource type="Script" path="res://scenes/enemy/saucer.gd" id="1_0aynk"]
 [ext_resource type="Texture2D" uid="uid://0dfqj2ho6x66" path="res://assets/ships/saucer_2.png" id="1_84tbm"]
 [ext_resource type="AudioStream" uid="uid://cvoomc7l1djge" path="res://assets/sounds/misc/sci-fi-door.wav" id="3_yf5c3"]
+[ext_resource type="PackedScene" uid="uid://dkok4nwl6boay" path="res://scenes/health_bar/health_bar.tscn" id="4_de51u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2cblw"]
 radius = 36.0
@@ -241,3 +242,12 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_8fxp0")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="HealthBar" parent="." instance=ExtResource("4_de51u")]
+offset_left = -30.0
+offset_top = -40.0
+offset_right = 30.0
+offset_bottom = -37.0
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_entered"]
+[connection signal="died" from="HealthBar" to="." method="_on_died"]

@@ -6,14 +6,14 @@ var missile_scene: PackedScene = preload("res://scenes/homing_missile/homing_mis
 
 @onready var state_machine = $AnimationTree["parameters/playback"]
 @onready var booms = $Booms
+@onready var health_bar = $HealthBar
 
 
 const SPEED: float = 0.03
 const SHOOT_PROGRESS: float = 0.02
 const FIRE_OFFSETS = [0.25, 0.5, 0.75]
-const BOOM_DELAY: float = 0.15
-const HIT_DAMAGE: int = 5
-const SCORE: int = 150
+const BOOM_DELAY: float = 0.08
+const HIT_DAMAGE: int = 25
 
 
 var _shooting: bool = false
@@ -57,13 +57,14 @@ func shoot() -> void:
 func die() -> void:
 	queue_free()
 
-
 func make_booms() -> void:
 	for b in booms.get_children():
 		ObjectMaker.create_boom(b.global_position)
 		await get_tree().create_timer(BOOM_DELAY).timeout
 
+func _on_died():
+	health_bar.disconnect("died", _on_died)
+	state_machine.travel("death")
 
-
-
-
+func _on_area_entered(area):
+	health_bar.take_damage(HIT_DAMAGE)

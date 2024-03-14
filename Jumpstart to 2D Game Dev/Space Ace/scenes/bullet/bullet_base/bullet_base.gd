@@ -18,6 +18,9 @@ func setup(pos:Vector2, dir:Vector2, sp:float, dmg:int):
 	_damage = dmg
 	global_position = pos
 
+func get_damage() -> int:
+	return _damage
+
 func _on_screen_exited():
 	queue_free()
 
