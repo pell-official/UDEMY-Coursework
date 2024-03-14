@@ -7,6 +7,7 @@ class_name Player
 @export var bullet_speed: float = 250.0
 @export var bullet_damage: int = 10
 @export var bullet_direction: Vector2 = Vector2.UP
+@onready var shield = $Shield
 const MARGIN: float = 32.0
 var _upper_left: Vector2
 var _lower_right: Vector2
@@ -47,7 +48,8 @@ func shoot():
 	get_tree().root.add_child(bullet)
 
 func on_powerup_hit(power_up:GameData.POWERUP_TYPE):
-	print("powerup: ", power_up)
+	if power_up == GameData.POWERUP_TYPE.SHIELD:
+		shield.enable_shield()
 
 func _on_area_entered(area):
-	pass # Replace with function body.
+	print("PLAYER ENTERED")

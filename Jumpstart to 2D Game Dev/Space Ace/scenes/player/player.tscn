@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://q3gqobyf7nab"]
+[gd_scene load_steps=10 format=3 uid="uid://q3gqobyf7nab"]
 
 [ext_resource type="Texture2D" uid="uid://cr67rj4h4sety" path="res://assets/ships/ships_human_1.png" id="1_6gcpd"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_7ywqi"]
 [ext_resource type="PackedScene" uid="uid://cyslqw02fhrmy" path="res://scenes/bullet/player_bullet.tscn" id="2_qasly"]
+[ext_resource type="PackedScene" uid="uid://dm5b44i6pp7xw" path="res://scenes/shield/shield.tscn" id="4_i3wh3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2tj3p"]
 radius = 11.4018
@@ -79,5 +80,7 @@ libraries = {
 "": SubResource("AnimationLibrary_iiwr3")
 }
 autoplay = "fly"
+
+[node name="Shield" parent="." instance=ExtResource("4_i3wh3")]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

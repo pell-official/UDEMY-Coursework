@@ -7,7 +7,8 @@ var _powerup_type: GameData.POWERUP_TYPE = GameData.POWERUP_TYPE.SHIELD
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_powerup_type(GameData.POWERUP_TYPE.HEALTH)
+	set_powerup_type(GameData.POWERUP_TYPE.SHIELD)
+	sprite_2d.texture = GameData.POWER_UPS[_powerup_type]
 	SoundManager.play_powerup_deploy_sound(sound)
 
 
@@ -17,7 +18,6 @@ func _process(delta):
 
 func set_powerup_type(pu:GameData.POWERUP_TYPE):
 	_powerup_type = pu
-	sprite_2d.texture = GameData.POWER_UPS[_powerup_type]
 
 func _on_screen_exited():
 	queue_free()

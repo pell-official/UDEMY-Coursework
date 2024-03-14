@@ -5,7 +5,6 @@ var missile_scene: PackedScene = preload("res://scenes/homing_missile/homing_mis
 
 
 @onready var state_machine = $AnimationTree["parameters/playback"]
-@onready var health_bar = $HealthBar
 @onready var booms = $Booms
 
 

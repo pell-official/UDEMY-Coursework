@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cajh6b3y12po1"]
+[gd_scene load_steps=6 format=3 uid="uid://cajh6b3y12po1"]
 
 [ext_resource type="Script" path="res://scenes/level/level.gd" id="1_u3aoi"]
 [ext_resource type="PackedScene" uid="uid://bd82pveyh3yt1" path="res://scenes/levelbg/level_bg.tscn" id="2_bgb0p"]
 [ext_resource type="PackedScene" uid="uid://q3gqobyf7nab" path="res://scenes/player/player.tscn" id="3_k3mh4"]
 [ext_resource type="PackedScene" uid="uid://mwvwnf8sc3i6" path="res://scenes/wave_manager/wave_manager.tscn" id="4_7hyex"]
-[ext_resource type="PackedScene" uid="uid://cgfqihe52n1jw" path="res://scenes/homing_missile/homing_missile.tscn" id="5_voxjr"]
 [ext_resource type="PackedScene" uid="uid://cv747lixm6khw" path="res://scenes/saucer_manager/saucer_manager.tscn" id="6_bdn53"]
 
 [node name="Level" type="Node2D"]
@@ -16,9 +15,6 @@ script = ExtResource("1_u3aoi")
 position = Vector2(286, 447)
 
 [node name="WaveManager" parent="." instance=ExtResource("4_7hyex")]
-
-[node name="HomingMissile" parent="." instance=ExtResource("5_voxjr")]
-position = Vector2(148, 262)
 
 [node name="SaucerManager" parent="." instance=ExtResource("6_bdn53")]
 
